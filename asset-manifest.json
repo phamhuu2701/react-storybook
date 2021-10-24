@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-storybook/static/css/main.b935ba0b.chunk.css",
-    "main.js": "/react-storybook/static/js/main.3eee304f.chunk.js",
-    "main.js.map": "/react-storybook/static/js/main.3eee304f.chunk.js.map",
+    "main.js": "/react-storybook/static/js/main.07b553ad.chunk.js",
+    "main.js.map": "/react-storybook/static/js/main.07b553ad.chunk.js.map",
     "runtime-main.js": "/react-storybook/static/js/runtime-main.b1077777.js",
     "runtime-main.js.map": "/react-storybook/static/js/runtime-main.b1077777.js.map",
     "static/css/2.4659568d.chunk.css": "/react-storybook/static/css/2.4659568d.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.4659568d.chunk.css",
     "static/js/2.337b4744.chunk.js",
     "static/css/main.b935ba0b.chunk.css",
-    "static/js/main.3eee304f.chunk.js"
+    "static/js/main.07b553ad.chunk.js"
   ]
 }
