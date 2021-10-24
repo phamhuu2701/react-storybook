@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { ListGroup } from "react-bootstrap";
+import ComponentDetail from "./ComponentDetail";
+import routes from "./routes";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: null,
+    };
+  }
+
+  render() {
+    const { selected } = this.state;
+
+    return (
+      <div style={{ margin: "1em", display: "flex", height: "100vh" }}>
+        <div
+          style={{
+            minWidth: 200,
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <ListGroup variant="flush">
+            {routes.map((item, index) => (
+              <ListGroup.Item
+                key={index}
+                action
+                onClick={() => this.setState({ selected: item })}
+                variant={selected?.id === item.id ? "primary" : ""}
+              >
+                {item.name}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </div>
+        <div
+          style={{
+            borderRight: "1px solid #dcdcdc",
+            margin: "0 1em",
+          }}
+        ></div>
+        <div style={{ flex: 1 }}>
+          {selected && <ComponentDetail component={selected} />}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
