@@ -43,8 +43,7 @@ export default class DraftJsEditor extends React.Component {
     }
 
     window.__editorStateChangeTimeout = setTimeout(
-      () =>
-        htmlText !== this.props.htmlText ? this.props.onChange(htmlText) : null,
+      () => this.props.onChange(htmlText === "<p><br></p>" ? "" : htmlText),
       400
     );
   };

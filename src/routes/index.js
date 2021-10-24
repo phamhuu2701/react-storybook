@@ -1,7 +1,6 @@
-import Test from "./Test";
 import DraftJsEditor from "./DraftJsEditor";
 
-let routes = [Test, DraftJsEditor];
+let routes = [DraftJsEditor];
 
 routes = routes.map((item, index) => ({ ...item, id: index + 1 }));
 
