@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Nav } from "react-bootstrap";
 import Api from "./Api";
-import Code from "./Code";
 import Demo from "./Demo";
 import Document from "./Document";
 
-const NAVS = ["Demo", "Document", "API", "Code"];
+const NAVS = ["Demo", "Document", "API"];
 
 class ComponentDetail extends Component {
   constructor(props) {
@@ -28,9 +27,6 @@ class ComponentDetail extends Component {
 
       case "API":
         return <Api component={component} />;
-
-      case "Code":
-        return <Code component={component} />;
 
       default:
         break;

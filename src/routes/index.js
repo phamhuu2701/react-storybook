@@ -1,6 +1,7 @@
 import DraftJsEditor from "./DraftJsEditor";
+import ScrollToTop from "./ScrollToTop";
 
-let routes = [DraftJsEditor];
+let routes = [DraftJsEditor, ScrollToTop];
 
 routes = routes.map((item, index) => ({ ...item, id: index + 1 }));
 

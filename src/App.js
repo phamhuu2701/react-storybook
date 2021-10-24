@@ -44,7 +44,7 @@ class App extends Component {
             borderRight: "1px solid #dcdcdc",
             margin: "0 1em",
           }}
-        ></div>
+        />
         <div style={{ flex: 1 }}>
           {selected && <ComponentDetail component={selected} />}
         </div>

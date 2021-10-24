@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Stack } from "react-bootstrap";
 
 class Document extends Component {
   constructor(props) {
@@ -9,12 +10,7 @@ class Document extends Component {
   render() {
     const { component } = this.props;
 
-    return (
-      <div>
-        <h5>Document</h5>
-        {component.document}
-      </div>
-    );
+    return <Stack>{component.document}</Stack>;
   }
 }
 
