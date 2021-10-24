@@ -12,6 +12,10 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ selected: routes[0] });
+  }
+
   render() {
     const { selected } = this.state;
 
