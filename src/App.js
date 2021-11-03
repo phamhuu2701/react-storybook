@@ -1,56 +1,41 @@
-import React, { Component } from "react";
-import { ListGroup } from "react-bootstrap";
-import ComponentDetail from "./ComponentDetail";
-import routes from "./routes";
-import "./App.css";
+import React, { Component } from "react"
+import "./App.css"
+import routes from "./routes"
+import Document from "./Document"
+import { Button, Stack } from "react-bootstrap"
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: null,
-    };
-  }
+    constructor(props) {
+        super(props)
+        this.state = {
+            selected: routes[0],
+        }
+    }
 
-  componentDidMount() {
-    this.setState({ selected: routes[0] });
-  }
+    render() {
+        const { selected } = this.state
 
-  render() {
-    const { selected } = this.state;
+        return (
+            <div className="app-main">
+                <div className="main-left">
+                    <Stack gap={2}>
+                        {routes.map((item, index) => (
+                            <Button
+                                variant={item.id === selected?.id ? "light" : "outline-primary"}
+                                key={item.id}
+                                disabled={item.id === selected?.id}
+                                onClick={() => this.setState({ selected: item })}
+                            >
+                                {item.name}
+                            </Button>
+                        ))}
+                    </Stack>
+                </div>
 
-    return (
-      <div style={{ margin: "1em", display: "flex", height: "100vh" }}>
-        <div
-          style={{
-            minWidth: 200,
-          }}
-        >
-          <ListGroup variant="flush">
-            {routes.map((item, index) => (
-              <ListGroup.Item
-                key={index}
-                action
-                onClick={() => this.setState({ selected: item })}
-                variant={selected?.id === item.id ? "primary" : ""}
-              >
-                {item.name}
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        </div>
-        <div
-          style={{
-            borderRight: "1px solid #dcdcdc",
-            margin: "0 1em",
-          }}
-        />
-        <div style={{ flex: 1 }}>
-          {selected && <ComponentDetail component={selected} />}
-        </div>
-      </div>
-    );
-  }
+                <div className="main-right">{selected && <Document selected={selected} />}</div>
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App

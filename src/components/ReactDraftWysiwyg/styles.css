@@ -1,0 +1,10 @@
+.react-draft-wysiwyg-wrapper {
+    border: 1px solid #f1f1f1;
+    padding: 0.3em;
+}
+
+.react-draft-wysiwyg-editor {
+    border: 1px solid #f1f1f1;
+    padding: 0 1em;
+    min-height: 200px;
+}

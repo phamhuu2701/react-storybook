@@ -1,12 +1,10 @@
 import React from "react"
-import Draft from "draft-js"
+import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from "draft-js"
 import { stateToHTML } from "draft-js-export-html"
 import { stateFromHTML } from "draft-js-import-html"
 import "./styles.css"
 
-const { Editor, EditorState, RichUtils, getDefaultKeyBinding } = Draft
-
-export default class DraftJsEditor extends React.Component {
+export default class ReactDraftJs extends React.Component {
     constructor(props) {
         super(props)
         this.state = { editorState: EditorState.createEmpty() }
@@ -16,35 +14,42 @@ export default class DraftJsEditor extends React.Component {
         this.toggleBlockType = this._toggleBlockType.bind(this)
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this)
     }
+
     componentDidMount() {
-        if (this.props.htmlText) {
-            let contentState = stateFromHTML(this.props.htmlText)
+        const { htmlText, height } = this.props
+
+        if (htmlText) {
+            let contentState = stateFromHTML(htmlText)
             this.setState({
                 editorState: EditorState.createWithContent(contentState),
             })
         }
 
-        if (this.props.height) {
+        if (height) {
             let editorEl = document.querySelector(".RichEditor-editor .public-DraftEditor-content")
             if (editorEl) {
-                editorEl.style.minHeight = this.props.height + "px"
+                editorEl.style.minHeight = height + "px"
             }
         }
     }
-    onChange = (editorState) => {
-        this.setState({ editorState })
 
-        let htmlText = stateToHTML(editorState.getCurrentContent())
+    onChange = (editorState) => {
+        const { onChange, htmlText } = this.props
+
+        this.setState({ editorState })
 
         if (window.__editorStateChangeTimeout) {
             clearTimeout(window.__editorStateChangeTimeout)
         }
 
-        window.__editorStateChangeTimeout = setTimeout(
-            () => this.props.onChange(htmlText === "<p><br></p>" ? "" : htmlText),
-            400,
-        )
+        window.__editorStateChangeTimeout = setTimeout(() => {
+            let _htmlText = stateToHTML(editorState.getCurrentContent())
+            if (_htmlText !== htmlText) {
+                onChange(_htmlText)
+            }
+        }, 400)
     }
+
     _handleKeyCommand(command, editorState) {
         const newState = RichUtils.handleKeyCommand(editorState, command)
         if (newState) {
@@ -53,6 +58,7 @@ export default class DraftJsEditor extends React.Component {
         }
         return false
     }
+
     _mapKeyToEditorCommand(e) {
         if (e.keyCode === 9 /* TAB */) {
             const newEditorState = RichUtils.onTab(e, this.state.editorState, 4 /* maxDepth */)
@@ -63,12 +69,15 @@ export default class DraftJsEditor extends React.Component {
         }
         return getDefaultKeyBinding(e)
     }
+
     _toggleBlockType(blockType) {
         this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType))
     }
+
     _toggleInlineStyle(inlineStyle) {
         this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle))
     }
+
     render() {
         const { editorState } = this.state
         // If the user changes block type before entering any text, we can
@@ -101,6 +110,7 @@ export default class DraftJsEditor extends React.Component {
         )
     }
 }
+
 // Custom overrides for "code" style.
 const styleMap = {
     CODE: {
@@ -110,6 +120,7 @@ const styleMap = {
         padding: 2,
     },
 }
+
 function getBlockStyle(block) {
     switch (block.getType()) {
         case "blockquote":
@@ -118,6 +129,7 @@ function getBlockStyle(block) {
             return null
     }
 }
+
 class StyleButton extends React.Component {
     constructor() {
         super()
@@ -126,6 +138,7 @@ class StyleButton extends React.Component {
             this.props.onToggle(this.props.style)
         }
     }
+
     render() {
         let className = "RichEditor-styleButton"
         if (this.props.active) {
@@ -138,6 +151,7 @@ class StyleButton extends React.Component {
         )
     }
 }
+
 const BLOCK_TYPES = [
     { label: "H1", style: "header-one" },
     { label: "H2", style: "header-two" },
@@ -150,6 +164,7 @@ const BLOCK_TYPES = [
     { label: "OL", style: "ordered-list-item" },
     { label: "Code Block", style: "code-block" },
 ]
+
 const BlockStyleControls = (props) => {
     const { editorState } = props
     const selection = editorState.getSelection()
@@ -171,12 +186,14 @@ const BlockStyleControls = (props) => {
         </div>
     )
 }
+
 var INLINE_STYLES = [
     { label: "Bold", style: "BOLD" },
     { label: "Italic", style: "ITALIC" },
     { label: "Underline", style: "UNDERLINE" },
     { label: "Monospace", style: "CODE" },
 ]
+
 const InlineStyleControls = (props) => {
     const currentStyle = props.editorState.getCurrentInlineStyle()
 

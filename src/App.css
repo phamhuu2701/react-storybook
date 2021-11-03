@@ -1,7 +1,35 @@
+.app-main {
+    display: flex;
+    padding: 1em;
+}
+
+.main-left {
+    width: 200px;
+    min-width: 200px;
+    overflow-y: auto;
+}
+
+.main-right {
+    flex: 1;
+    min-width: 400px;
+    border-left: 0.1em solid #dcdcdc;
+    margin-left: 1em;
+    padding-left: 1em;
+}
+
+.main-left button {
+    width: 100%;
+}
+
+.main-right-body {
+    padding: 1em 0 4em 0;
+}
+
 .code-block {
-  width: 100%;
-  background: rgb(0, 30, 60);
-  border-radius: 4px;
-  padding: 1em;
-  color: #e6db74;
+    width: 100%;
+    background: rgb(0, 30, 60);
+    border-radius: 0.4em;
+    padding: 1em;
+    color: #ffffff;
+    font-size: 1.2em;
 }
