@@ -1,7 +1,7 @@
 import ReactDraftWysiwygDemo from "../Demos/ReactDraftWysiwygDemo"
 
 export default {
-    name: "ReactDraftWysiwyg",
+    name: "React Draft Wysiwyg",
     demo: <ReactDraftWysiwygDemo />,
     document: [
         { title: "Repository", url: "https://github.com/jpuri/react-draft-wysiwyg" },

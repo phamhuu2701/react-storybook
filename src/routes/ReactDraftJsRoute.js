@@ -1,7 +1,7 @@
 import ReactDraftJsDemo from "../Demos/ReactDraftJsDemo"
 
 export default {
-    name: "ReactDraftJs",
+    name: "React Draft Js",
     demo: <ReactDraftJsDemo />,
     document: [
         { title: "Home page", url: "https://draftjs.org" },

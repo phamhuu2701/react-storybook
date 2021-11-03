@@ -6,7 +6,13 @@ class Demo extends Component {
     render() {
         const { selected } = this.props
 
-        return <Stack>{selected.demo}</Stack>
+        return (
+            <Stack>
+                <h5>{selected.name}</h5>
+
+                {selected.demo}
+            </Stack>
+        )
     }
 }
 

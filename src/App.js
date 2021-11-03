@@ -21,7 +21,7 @@ class App extends Component {
                     <Stack gap={2}>
                         {routes.map((item, index) => (
                             <Button
-                                variant={item.id === selected?.id ? "light" : "outline-primary"}
+                                variant={item.id === selected?.id ? "primary" : "outline-primary"}
                                 key={item.id}
                                 disabled={item.id === selected?.id}
                                 onClick={() => this.setState({ selected: item })}
