@@ -1,43 +1,41 @@
-import React, { Component } from "react";
-import "./styles.css";
+import React, { Component } from "react"
+import "./styles.css"
 
 class ScrollToTop extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false,
-    };
-  }
-
-  handleOnScroll = () => {
-    if (window.__scrollTimeout) {
-      clearTimeout(window.__scrollTimeout);
+    constructor(props) {
+        super(props)
+        this.state = {
+            show: false,
+        }
     }
 
-    window.__scrollTimeout = setTimeout(() => {
-      if (window.pageYOffset <= 200) {
-        this.setState({ show: false });
-      } else {
-        this.setState({ show: true });
-      }
-    }, 200);
-  };
+    handleOnScroll = () => {
+        if (window.__scrollTimeout) {
+            clearTimeout(window.__scrollTimeout)
+        }
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleOnScroll);
-  }
+        window.__scrollTimeout = setTimeout(() => {
+            if (window.pageYOffset <= 200) {
+                this.setState({ show: false })
+            } else {
+                this.setState({ show: true })
+            }
+        }, 200)
+    }
 
-  handleScrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0 });
-  };
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleOnScroll)
+    }
 
-  render() {
-    const { show } = this.state;
+    handleScrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0 })
+    }
 
-    return (
-      show && <div className="scroll-to-top" onClick={this.handleScrollToTop} />
-    );
-  }
+    render() {
+        const { show } = this.state
+
+        return show && <div className="scroll-to-top" onClick={this.handleScrollToTop} />
+    }
 }
 
-export default ScrollToTop;
+export default ScrollToTop
