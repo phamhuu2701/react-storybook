@@ -1,10 +1,15 @@
 .react-draft-wysiwyg-wrapper {
-    border: 1px solid #f1f1f1;
-    padding: 0.3em;
+    border: 1px solid #dfdfdf;
+    border-radius: 0.2em;
+    overflow: hidden;
 }
 
 .react-draft-wysiwyg-editor {
-    border: 1px solid #f1f1f1;
     padding: 0 1em;
     min-height: 200px;
+}
+
+.rdw-editor-toolbar {
+    border: none;
+    border-bottom: 1px solid #dfdfdf;
 }
