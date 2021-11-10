@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import "./styles.css"
+import React, { Component } from 'react'
+import './styles.css'
 
 class ScrollToTop extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class ScrollToTop extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener("scroll", this.handleOnScroll)
+        window.addEventListener('scroll', this.handleOnScroll)
     }
 
     handleScrollToTop = () => {

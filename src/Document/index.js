@@ -1,10 +1,10 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import { Nav } from "react-bootstrap"
-import Api from "./Api"
-import Demo from "./Demo"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Nav } from 'react-bootstrap'
+import Api from './Api'
+import Demo from './Demo'
 
-const NAVS = ["Demo", "API"]
+const NAVS = ['Demo', 'API']
 
 class Document extends Component {
     constructor(props) {
@@ -19,10 +19,10 @@ class Document extends Component {
         const { activeKey } = this.state
 
         switch (activeKey) {
-            case "Demo":
+            case 'Demo':
                 return <Demo selected={selected} />
 
-            case "API":
+            case 'API':
                 return <Api selected={selected} />
 
             default:

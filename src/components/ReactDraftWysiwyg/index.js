@@ -1,13 +1,13 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import { EditorState, convertToRaw } from "draft-js"
-import { Editor } from "react-draft-wysiwyg"
-import draftToHtml from "draftjs-to-html"
-import { stateFromHTML } from "draft-js-import-html"
-import { unemojify } from "node-emoji"
-import "./styles.css"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { EditorState, convertToRaw } from 'draft-js'
+import { Editor } from 'react-draft-wysiwyg'
+import draftToHtml from 'draftjs-to-html'
+import { stateFromHTML } from 'draft-js-import-html'
+import { unemojify } from 'node-emoji'
+import './styles.css'
 
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 class ReactDraftWysiwyg extends Component {
     constructor(props) {
@@ -18,25 +18,25 @@ class ReactDraftWysiwyg extends Component {
     }
 
     componentDidMount() {
-        const { textHtml, height } = this.props
+        const { htmlText, height } = this.props
 
-        if (textHtml) {
-            let contentState = stateFromHTML(textHtml)
+        if (htmlText) {
+            let contentState = stateFromHTML(htmlText)
             this.setState({
                 editorState: EditorState.createWithContent(contentState),
             })
         }
 
         if (height) {
-            let editorEl = document.querySelector(".react-draft-wysiwyg-editor")
+            let editorEl = document.querySelector('.react-draft-wysiwyg-editor > .DraftEditor-root')
             if (editorEl) {
-                editorEl.style.minHeight = height + "px"
+                editorEl.style.minHeight = height + 'px'
             }
         }
     }
 
     onEditorStateChange = (editorState) => {
-        const { textHtml, onChange } = this.props
+        const { htmlText, onChange } = this.props
 
         this.setState({ editorState })
 
@@ -45,9 +45,10 @@ class ReactDraftWysiwyg extends Component {
         }
 
         window.__editorStateChangeTimeout = setTimeout(() => {
-            let _textHtml = unemojify(draftToHtml(convertToRaw(editorState.getCurrentContent())))
-            if (_textHtml !== textHtml) {
-                onChange(_textHtml)
+            let _htmlText = unemojify(draftToHtml(convertToRaw(editorState.getCurrentContent())))
+
+            if (_htmlText !== htmlText) {
+                onChange(_htmlText)
             }
         }, 400)
     }
@@ -72,13 +73,13 @@ class ReactDraftWysiwyg extends Component {
 }
 
 ReactDraftWysiwyg.propTypes = {
-    textHtml: PropTypes.string,
+    htmlText: PropTypes.string,
     onChange: PropTypes.func,
     height: PropTypes.number,
 }
 
 ReactDraftWysiwyg.defaultProps = {
-    textHtml: "",
+    htmlText: '',
     onChange: () => null,
     height: 200,
 }

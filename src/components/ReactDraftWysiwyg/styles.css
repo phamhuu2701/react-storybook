@@ -1,15 +1,20 @@
 .react-draft-wysiwyg-wrapper {
-    border: 1px solid #dfdfdf;
+    border: 0.1em solid #dfdfdf;
     border-radius: 0.2em;
     overflow: hidden;
 }
 
-.react-draft-wysiwyg-editor {
-    padding: 0 1em;
-    min-height: 200px;
+.react-draft-wysiwyg-wrapper > .rdw-editor-toolbar {
+    margin: unset;
+    border: unset;
+    border-bottom: 0.1em solid #dfdfdf;
 }
 
-.rdw-editor-toolbar {
-    border: none;
-    border-bottom: 1px solid #dfdfdf;
+.react-draft-wysiwyg-editor {
+    padding: 0 1em 1em;
+    cursor: text;
+}
+
+.react-draft-wysiwyg-editor > .DraftEditor-root {
+    min-height: 200px;
 }

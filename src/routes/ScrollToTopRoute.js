@@ -1,12 +1,12 @@
-import ScrollToTopDemo from "../Demos/ScrollToTopDemo"
+import ScrollToTopDemo from '../Demos/ScrollToTopDemo'
 
 export default {
-    name: "Scroll To Top",
+    name: 'Scroll To Top',
     demo: <ScrollToTopDemo />,
     document: [],
-    github: "https://github.com/phamhuu2701/react-storybook/tree/master/src/components/ScrollToTop",
+    github: 'https://github.com/phamhuu2701/react-storybook/tree/master/src/components/ScrollToTop',
     usage: {
-        name: "ScrollToTop",
+        name: 'ScrollToTop',
         props: [],
     },
     api: [],

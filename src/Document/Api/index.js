@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import { Stack } from "react-bootstrap"
-import "./styles.css"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Stack } from 'react-bootstrap'
+import './styles.css'
 
 class Api extends Component {
     render() {
@@ -31,7 +31,7 @@ class Api extends Component {
                         <Stack>
                             <h5>Code in Github</h5>
                             <a href={selected.github} target="_blank" rel="noreferrer">
-                                {selected.github.replace("tree/master/src/components", "...")}
+                                {selected.github.replace('tree/master/src/components', '...')}
                             </a>
                         </Stack>
                     )}
@@ -44,12 +44,12 @@ class Api extends Component {
                                 <span className="name">{selected.usage?.name} </span>
                                 {selected.usage?.props?.length > 0
                                     ? selected.usage.props.map((item, index) => (
-                                          <div key={index} style={{ marginLeft: "1em" }}>
+                                          <div key={index} style={{ marginLeft: '1em' }}>
                                               <span className="prop-name">{item[0]}</span>=
                                               <span className="prop-value">{item[1]}</span>
                                           </div>
                                       ))
-                                    : ""}
+                                    : ''}
                                 &#47;&#62;
                             </div>
                         </Stack>

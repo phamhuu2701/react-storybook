@@ -1,13 +1,13 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import { Stack } from "react-bootstrap"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Stack } from 'react-bootstrap'
 
 class Demo extends Component {
     render() {
         const { selected } = this.props
 
         return (
-            <Stack>
+            <Stack gap={2}>
                 <h5>{selected.name}</h5>
 
                 {selected.demo}

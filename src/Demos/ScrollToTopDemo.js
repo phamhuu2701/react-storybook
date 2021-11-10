@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import ScrollToTop from "../components/ScrollToTop"
+import React, { Component } from 'react'
+import ScrollToTop from '../components/ScrollToTop'
 
 class ScrollToTopDemo extends Component {
     constructor(props) {
@@ -8,7 +8,7 @@ class ScrollToTopDemo extends Component {
     }
 
     componentDidMount() {
-        window.scrollTo({ top: 300, left: 0, behavior: "smooth" })
+        window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
     }
 
     render() {
